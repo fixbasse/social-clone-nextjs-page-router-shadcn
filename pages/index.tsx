@@ -1,7 +1,14 @@
-
+import { Header } from "@/components/header";
 
 export default function Home() {
   return (
-    <div>Home</div>
+    <div>
+
+
+      <Header
+        label="Home"
+      />
+
+    </div>
   )
 }
