@@ -12,7 +12,7 @@ const Layout = ({
         <div className="max-[425px]:p-4 p-8">
 
             <main className="grid grid-cols-8 gap-8">
-                <nav className="col-span-2 border rounded-xl p-4">
+                <nav className="col-span-2 h-fit border rounded-xl p-4">
                     <Sidebar />
                 </nav>
 
@@ -20,7 +20,7 @@ const Layout = ({
                     {children}
                 </div>
 
-                <aside className="col-span-2 border rounded-xl p-4 hidden md:block">
+                <aside className="col-span-2 h-fit border rounded-xl p-4 hidden md:block bg-primary-foreground">
                     <FollowBar />
                 </aside>
             </main>
