@@ -14,7 +14,7 @@ export default async function handler(
 
         return res.status(200).json(currentUser);
     } catch (error) {
-        console.log(error);
+        console.log(error, 'Error');
         return res.status(400).send('Internal Error at [CurrentUser]'); // comment this to prevent error message
     };
 };

@@ -34,14 +34,15 @@ export const LoginModal = () => {
     // *
     const onSubmit: SubmitHandler<InputTypes> = async (values) => {
         console.log(values);
-        
+
         try {
             setIsLoading(true);
 
             await signIn('credentials', {
-                ...values
+                ...values,
+                redirect: false
             });
-            
+
             loginHook.onClose();
             toast({ title: 'You are sign in!' });
         } catch (error) {
