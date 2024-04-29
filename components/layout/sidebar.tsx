@@ -32,7 +32,7 @@ export const Sidebar = () => {
     const { data: currentUser } = useCurrentUser(); // useSession()
 
     return (
-        <div className="flex flex-col max-md:items-center gap-6">
+        <div className="flex flex-col max-md:items-center gap-6 font-bold">
             {items.map((item) => (
                 <SidebarItem
                     key={item.href}

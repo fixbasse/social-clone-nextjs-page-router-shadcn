@@ -1,4 +1,4 @@
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import { useCallback } from "react";
 import { BiArrowBack } from "react-icons/bi";
 
@@ -18,15 +18,17 @@ export const Header = ({
     }, [router]);
 
     return (
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 px-4">
 
-            {showBackArrow && (
-                <BiArrowBack
-                    onClick={handleBack}
-                />
-            )}
+            <div className="cursor-pointer">
+                {showBackArrow && (
+                    <BiArrowBack
+                        onClick={handleBack}
+                    />
+                )}
+            </div>
 
-            <h3>
+            <h3 className="font-bold text-2xl">
                 {label}
             </h3>
         </div>

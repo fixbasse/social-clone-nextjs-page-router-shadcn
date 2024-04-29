@@ -21,8 +21,7 @@ export const FollowBar = () => {
 
       <div className='flex flex-col gap-2'>
         {users.map((user: User) => (
-          <Link
-            href={`/users/${user.id}`}
+          <div
             key={user.id}
             className='flex gap-x-4 items-center'
           >
@@ -35,7 +34,7 @@ export const FollowBar = () => {
                 @{user.username}
               </h4>
             </span>
-          </Link>
+          </div>
         ))}
       </div>
     </div>

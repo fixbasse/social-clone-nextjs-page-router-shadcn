@@ -9,18 +9,18 @@ const Layout = ({
     children
 }: LayoutProps) => {
     return (
-        <div className="max-[425px]:p-4 p-8">
+        <div>
 
-            <main className="grid grid-cols-8 gap-8">
-                <nav className="col-span-2 h-fit border rounded-xl p-4">
+            <main className="grid grid-cols-8">
+                <nav className="col-span-2 h-screen p-8">
                     <Sidebar />
                 </nav>
 
-                <div className="col-span-4">
+                <div className="col-span-4 py-4 border">
                     {children}
                 </div>
 
-                <aside className="col-span-2 h-fit border rounded-xl p-4 hidden md:block bg-primary-foreground">
+                <aside className="col-span-2 h-fit m-8 border rounded-xl p-4 hidden md:block bg-primary-foreground">
                     <FollowBar />
                 </aside>
             </main>
