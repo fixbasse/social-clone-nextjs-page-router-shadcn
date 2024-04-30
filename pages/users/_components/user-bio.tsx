@@ -1,7 +1,96 @@
-import React from 'react'
+import { useMemo } from "react";
+import dayjs from 'dayjs'
+import 'dayjs/locale/th'
 
-export const UserBio = () => {
+import useCurrentUser from "@/hooks/use-current-user";
+import useUser from "@/hooks/use-user";
+import { Button } from "@/components/ui/button";
+import { BiCalendar } from "react-icons/bi";
+
+interface UserBioProps {
+  userId: string;
+};
+
+export const UserBio = ({
+  userId
+}: UserBioProps) => {
+  const { data: currentUser } = useCurrentUser();
+  const { data: fetchedUser } = useUser(userId);
+
+  const createdAt = useMemo(() => {
+    if (!fetchedUser?.createdAt) {
+      return null;
+    };
+
+    return dayjs(new Date(fetchedUser.createdAt)).format('MMMM-YYYY');
+  }, [fetchedUser?.createdAt]);
+
   return (
-    <div>UserBio</div>
+    <div className="p-4 border-b">
+
+      <span className="flex justify-end mb-4">
+        {currentUser?.id === userId ? (
+          <Button>
+            Edit
+          </Button>
+        ) : (
+          <Button>
+            Follow
+          </Button>
+        )}
+      </span>
+
+      {/* USER DATA */}
+      <section>
+        {/* NAME & USERNAME */}
+        <div>
+          <h4 className="font-bold text-2xl">
+            {fetchedUser?.name}
+          </h4>
+          <h6 className="text-muted-foreground text-sm">
+            @{fetchedUser?.username}
+          </h6>
+        </div>
+
+        {/* BIO */}
+        <p className="text-xs">
+          {fetchedUser?.bio}
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Eius nulla blanditiis non velit laborum, eaque dolore
+          necessitatibus beatae ipsa, pariatur animi. Iusto iste
+          optio animi corporis? Totam sed dolorum officiis?
+        </p>
+
+        <div className="text-muted-foreground mt-4">
+          <span className="flex items-center gap-1">
+            <BiCalendar />
+
+            <h6 className="text-sm">
+              Joined {createdAt}
+            </h6>
+          </span>
+
+          <div className="flex items-center gap-2 text-sm">
+            <span className="flex items-center gap-1">
+              <h6 className="text-primary">
+                {fetchedUser?.followingIds.length}
+              </h6>
+
+              Followings
+            </span>
+
+            <span className="flex items-center gap-1">
+              <h6 className="text-primary">
+                {fetchedUser?.followerCount?.length || 0}
+              </h6>
+
+              Followers
+            </span>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
   )
 }

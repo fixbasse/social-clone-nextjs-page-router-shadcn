@@ -1,6 +1,7 @@
 import { Avatar } from "@/components/avatar";
 import useUser from "@/hooks/use-user";
 import Image from "next/image";
+import { UserBio } from "./user-bio";
 
 interface UserHeroProps {
     userId: string;
@@ -30,7 +31,10 @@ export const UserHero = ({
                         hasBorder
                     />
                 </div>
+
             </div>
+
+            <UserBio userId={userId} />
         </div>
     )
 }

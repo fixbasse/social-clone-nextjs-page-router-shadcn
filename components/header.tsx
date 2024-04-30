@@ -28,7 +28,7 @@ export const Header = ({
                 )}
             </div>
 
-            <h3 className="font-bold text-2xl">
+            <h3 className="font-bold text-xl">
                 {label}
             </h3>
         </div>
