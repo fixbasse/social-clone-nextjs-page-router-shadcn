@@ -103,7 +103,6 @@ export const RegisterModal = () => {
             isOpen={registerHook.isOpen}
             onClose={registerHook.onClose}
             title='Register'
-            trigger='Create account'
             body={bodyContent}
             disabled={isLoading}
             actionLabel='Register'

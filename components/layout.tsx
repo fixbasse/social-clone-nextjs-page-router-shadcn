@@ -16,7 +16,7 @@ const Layout = ({
                     <Sidebar />
                 </nav>
 
-                <div className="col-span-4 py-4 border">
+                <div className="col-span-4 border">
                     {children}
                 </div>
 

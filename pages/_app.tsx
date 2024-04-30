@@ -1,4 +1,5 @@
 import Layout from "@/components/layout";
+import { EditModal } from "@/components/modals/edit-modal";
 import { LoginModal } from "@/components/modals/login-modal";
 import { RegisterModal } from "@/components/modals/register-modal";
 import { Toaster } from "@/components/ui/toaster";
@@ -12,6 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Layout>
 
         <Toaster />
+        <EditModal />
         <LoginModal />
         <RegisterModal />
         <Component {...pageProps} />

@@ -8,28 +8,29 @@ import { CiLogout } from "react-icons/ci";
 import useCurrentUser from "@/hooks/use-current-user";
 import { signOut } from "next-auth/react";
 
-const items = [
-    {
-        label: 'Home',
-        href: '/',
-        icon: FaHome
-    },
-    {
-        label: 'Notifications',
-        href: '/notifications',
-        icon: FaRegBell,
-        auth: true
-    },
-    {
-        label: 'Profile',
-        href: '/user/123',
-        icon: FaRegUser,
-        auth: true
-    },
-];
 
 export const Sidebar = () => {
     const { data: currentUser } = useCurrentUser(); // useSession()
+    
+    const items = [
+        {
+            label: 'Home',
+            href: '/',
+            icon: FaHome
+        },
+        {
+            label: 'Notifications',
+            href: '/notifications',
+            icon: FaRegBell,
+            auth: true
+        },
+        {
+            label: 'Profile',
+            href: `/users/${currentUser?.id}`,
+            icon: FaRegUser,
+            auth: true
+        },
+    ];
 
     return (
         <div className="flex flex-col max-md:items-center gap-6 font-bold">

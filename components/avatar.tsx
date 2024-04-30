@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import useUser from "@/hooks/use-user";
 import Image from "next/image";
 import { HiUserCircle } from "react-icons/hi2";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface AvatarProps {
     userId: string;
@@ -24,7 +24,6 @@ export const Avatar = ({
         const url = `/users/${userId}`;
         router.push(url);
     }, [router, userId]);
-
 
     return (
         <div

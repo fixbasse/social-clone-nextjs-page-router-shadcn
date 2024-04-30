@@ -5,7 +5,6 @@ import {
     DialogFooter,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
 } from "@/components/ui/dialog"
 import { useCallback } from "react";
 
@@ -18,7 +17,6 @@ interface ModalProps {
     body?: React.ReactElement;
     onAction: () => void;
     actionLabel?: string;
-    trigger: string;
     footerContent?: React.ReactElement;
 };
 
@@ -31,7 +29,6 @@ export function Modal({
     body,
     onAction,
     actionLabel,
-    trigger,
     footerContent
 }: ModalProps) {
     const handleOnAction = useCallback(() => {
@@ -46,12 +43,6 @@ export function Modal({
 
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
-            {/* <DialogTrigger asChild>
-                <Button className="rounded-[8px]">
-                    {trigger}
-                </Button>
-            </DialogTrigger> */}
-
             <DialogContent className="border-none">
                 <DialogHeader>
                     <DialogTitle className="text-2xl">

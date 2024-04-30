@@ -2,8 +2,6 @@ import useUsers from '@/hooks/use-users'
 import { User } from '@prisma/client';
 import { Avatar } from '../avatar';
 import { useRouter } from 'next/navigation';
-import { useCallback } from 'react';
-import Link from 'next/link';
 
 export const FollowBar = () => {
   const router = useRouter();

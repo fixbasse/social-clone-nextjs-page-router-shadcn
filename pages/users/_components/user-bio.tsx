@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import dayjs from 'dayjs'
 import 'dayjs/locale/th'
 
@@ -6,6 +6,7 @@ import useCurrentUser from "@/hooks/use-current-user";
 import useUser from "@/hooks/use-user";
 import { Button } from "@/components/ui/button";
 import { BiCalendar } from "react-icons/bi";
+import useEditModal from "@/hooks/use-edit-modal";
 
 interface UserBioProps {
   userId: string;
@@ -14,8 +15,13 @@ interface UserBioProps {
 export const UserBio = ({
   userId
 }: UserBioProps) => {
+  const editHook = useEditModal();
   const { data: currentUser } = useCurrentUser();
   const { data: fetchedUser } = useUser(userId);
+
+  const onClick = useCallback(() => {
+    editHook.onOpen();
+  }, [editHook]);
 
   const createdAt = useMemo(() => {
     if (!fetchedUser?.createdAt) {
@@ -30,7 +36,7 @@ export const UserBio = ({
 
       <span className="flex justify-end mb-4">
         {currentUser?.id === userId ? (
-          <Button>
+          <Button onClick={onClick}>
             Edit
           </Button>
         ) : (
@@ -40,20 +46,20 @@ export const UserBio = ({
         )}
       </span>
 
-      {/* USER DATA */}
-      <section>
+      {/* USER DATA CONTENT ==========> */}
+      <div>
         {/* NAME & USERNAME */}
-        <div>
+        <span>
           <h4 className="font-bold text-2xl">
             {fetchedUser?.name}
           </h4>
           <h6 className="text-muted-foreground text-sm">
             @{fetchedUser?.username}
           </h6>
-        </div>
+        </span>
 
         {/* BIO */}
-        <p className="text-xs">
+        <p className="text-sm">
           {fetchedUser?.bio}
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
           Eius nulla blanditiis non velit laborum, eaque dolore
@@ -61,16 +67,18 @@ export const UserBio = ({
           optio animi corporis? Totam sed dolorum officiis?
         </p>
 
-        <div className="text-muted-foreground mt-4">
-          <span className="flex items-center gap-1">
+        <section className="text-muted-foreground mt-4">
+          {/* JoinedAt */}
+          <div className="flex items-center gap-1">
             <BiCalendar />
 
             <h6 className="text-sm">
               Joined {createdAt}
             </h6>
-          </span>
+          </div>
 
-          <div className="flex items-center gap-2 text-sm">
+          {/* Follows */}
+          <div className="flex items-center gap-2 text-sm mt-2">
             <span className="flex items-center gap-1">
               <h6 className="text-primary">
                 {fetchedUser?.followingIds.length}
@@ -87,9 +95,8 @@ export const UserBio = ({
               Followers
             </span>
           </div>
-
-        </div>
-      </section>
+        </section>
+      </div>
 
     </div>
   )

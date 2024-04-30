@@ -16,8 +16,9 @@ export const TweetButton = () => {
     return (
         <>
             <Button
+                variant='primary'
                 onClick={onClick}
-                className="max-md:hidden p-2 bg-pink-600 text-primary rounded-full font-bold text-center">
+                className="max-md:hidden p-2 text-primary rounded-full font-bold text-center">
                 Tweet
             </Button>
 

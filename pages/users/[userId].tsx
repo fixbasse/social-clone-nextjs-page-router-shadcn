@@ -20,7 +20,7 @@ const UserViewPage = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col">
       <Header
         label={fetchedUser?.name}
         showBackArrow

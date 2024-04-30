@@ -89,7 +89,6 @@ export const LoginModal = () => {
             isOpen={loginHook.isOpen}
             onClose={loginHook.onClose}
             title='Login'
-            trigger='Signin'
             body={bodyContent}
             disabled={isLoading}
             actionLabel='Signin'

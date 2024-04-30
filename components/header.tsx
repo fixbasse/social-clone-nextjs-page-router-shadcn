@@ -18,7 +18,7 @@ export const Header = ({
     }, [router]);
 
     return (
-        <div className="flex items-center gap-4 px-4">
+        <div className="flex items-center gap-4 p-4">
 
             <div className="cursor-pointer">
                 {showBackArrow && (
